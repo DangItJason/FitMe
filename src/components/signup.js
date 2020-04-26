@@ -69,7 +69,7 @@ class Signup extends Component {
                             value={this.state.password}
                         />
                     </InputGroup>
-                    <button type="submit" variant = "primary">Submit</button>
+                    <button type="submit" variant = "primary">Sign Up</button>
                 </Form>
             </Card>
         )

@@ -8,7 +8,7 @@ class FetchHomeData extends Component {
     };
 
     componentDidMount() {
-        //const url = "";
+        //const url = "my api url";
         //const response = await fetch(url);
         //const data = await response.json();
         this.setState({

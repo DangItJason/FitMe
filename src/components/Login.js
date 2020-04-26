@@ -45,7 +45,7 @@ class Login extends Component {
 							value={this.state.password}
 						/>
 					</InputGroup>
-					<button type="submit" variant="primary">Submit</button>
+					<button type="submit" variant="primary">Log In</button>
 				</Form>
 			</Card>
 		)
