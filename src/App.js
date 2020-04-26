@@ -6,7 +6,7 @@ import Signup from "./signup.js"
 
 function App() {
   return (
-    <Signup></Signup>
+    <Login></Login>
   );
 }
 
