@@ -9,13 +9,13 @@ class Login extends Component {
 	};
 
 	handleChange  = event => {
-		
 		this.setState({
 			[event.target.name]: event.target.value
 		})
 	}
 
 	handleSubmit = event => {
+		//Later we can make this functional.
 		event.preventDefault();
 		console.log(this.state)
 	}
@@ -39,7 +39,6 @@ class Login extends Component {
 				</input>
 				</div>
 				<button type="submit">Submit</button>
-
 			</form>
  		)
  	}
