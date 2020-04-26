@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import Card from 'react-bootstrap/Card';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
+
 //import authLogin from './auth.js';
 
 class Signup extends Component {
@@ -35,32 +39,41 @@ class Signup extends Component {
 	}
 
  	render() {
- 		return( 
-			<form onSubmit = {this.handleSubmit}>
-                <div>
-				<input onChange = {this.handleChange}
-					name = "name" 
-					value = {this.state.name} 
-					placeholder = "Name">
-				</input>
-				</div>
-				<div>
-				<input onChange = {this.handleChange}
-					name = "email" 
-					value = {this.state.email} 
-					placeholder = "Email">
-				</input>
-				</div>
-				<div>
-				<input onChange = {this.handleChange} 
-					name = "password"
-					type = "password" 
+ 		return(
+            <Card>
+                <Card.Title>Sign Up</Card.Title>
+                <form onSubmit = {this.handleSubmit}>
+                <InputGroup className="mb-3">
+                    <FormControl
+                    onChange = {this.handleChange}
+                    name = "name" 
+                    placeholder="Name"
+                    value = {this.state.name} 
+                    aria-label="name"
+                    />
+                </InputGroup>
+                <InputGroup className="mb-3">
+                    <FormControl
+                    onChange = {this.handleChange}
+                    name = "email" 
+                    placeholder="Email"
+                    value = {this.state.email} 
+                    aria-label="Email"
+                    />
+                </InputGroup>
+                <InputGroup className="mb-3">
+                    <FormControl
+                    onChange = {this.handleChange}
+                    name = "password" 
+                    placeholder="Password"
+                    type = "password" 
 					value = {this.state.password} 
-					placeholder = "Password">	
-				</input>
-				</div>
-				<button type="submit">Submit</button>
-			</form>
+                    aria-label="Password"
+                    />
+                </InputGroup>
+                <button type="submit">Submit</button>
+                </form>
+            </Card>
  		)
  	}
 }
