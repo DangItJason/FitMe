@@ -3,46 +3,44 @@ import React, { Component } from 'react';
 
 class Login extends Component {
 	
-	
 	state = {
-		text: "Sucesss"
+		email: "",
+		password: "",
 	};
 
-	handlerSubmit = () => {
+	handleChange  = event => {
+		
 		this.setState({
-			text: "Button Clicked"
-		});
-	};
+			[event.target.name]: event.target.value
+		})
+	}
+
+	handleSubmit = event => {
+		event.preventDefault();
+		console.log(this.state)
+	}
 
  	render() {
- 		return(
- 			<div class = "container">
- 				<div class = "card">
-		 			<form>
-            <h3 id = "login_title">Log In</h3>
+ 		return( 
+			<form onSubmit = {this.handleSubmit}>
+				<div>
+				<input onChange = {this.handleChange}
+					name = "email" 
+					value = {this.state.email} 
+					placeholder = "Email">
+				</input>
+				</div>
+				<div>
+				<input onChange = {this.handleChange} 
+					name = "password"
+					type = "password" 
+					value = {this.state.password} 
+					placeholder = "Password">	
+				</input>
+				</div>
+				<button type="submit">Submit</button>
 
-            <div className="form-group">
-                <label>Email address</label>
-                <input type="email" id = "email" className="form-control" placeholder="Enter email" />
-            </div>
-
-            <div className="form-group">
-                <label>Password</label>
-                <input type="password" id = "password" className="form-control" placeholder="Enter password" />
-            </div>
-
-            <div className="form-group">
-                <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                    <label className="custom-control-label" htmlFor="customCheck1">Remember me</label>
-                </div>
-            </div>
-
-            <button onClick = {this.handlerSubmit} className="btn btn-primary btn-block">{this.state.text}</button>
-            <div>{this.state.text}</div>
-        	</form>
-      	</div>
-    	</div>
+			</form>
  		)
  	}
 }
