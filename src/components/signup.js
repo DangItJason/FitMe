@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import Card from 'react-bootstrap/Card';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import Form from 'react-bootstrap/Form';
-
-//import authLogin from './auth.js';
+import './Login.css'; //same CSS as login...
 
 class Signup extends Component {
 
@@ -37,10 +32,10 @@ class Signup extends Component {
             body: JSON.stringify(this.state),
             headers: { //Make sure your header content type you specify and body type match.
                 'Content-Type': 'application/json',
-              },
+            },
         })
-        .then(res => res.json())
-        .then(res => console.log(res));
+            .then(res => res.json())
+            .then(res => console.log(res));
     }
 
     handleSubmit = event => {
@@ -54,37 +49,55 @@ class Signup extends Component {
 
     render() {
         return (
-            <Card>
-                <Card.Title>Sign Up</Card.Title>
-                <Form onSubmit={this.handleSubmit}>
-                    <InputGroup className="mb-3">
-                        <FormControl
-                            onChange={this.handleChange}
-                            name="name"
-                            placeholder="Name"
-                            value={this.state.name}
-                        />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                        <FormControl
-                            onChange={this.handleChange}
-                            name="email"
-                            placeholder="Email"
-                            value={this.state.email}
-                        />
-                    </InputGroup>
-                    <InputGroup className="mb-3">
-                        <FormControl
-                            onChange={this.handleChange}
-                            name="password"
-                            placeholder="Password"
-                            type="password"
-                            value={this.state.password}
-                        />
-                    </InputGroup>
-                    <button type="submit" variant="primary">Sign Up</button>
-                </Form>
-            </Card>
+            <div>
+                <div className="sidenav">
+                    <div className="login-main-text">
+                        <h2>Sign Up!</h2>
+                        <p>Enter your name, email and password.</p>
+                    </div>
+                </div>
+                <div className="main">
+                    <div className="col-md-4 col-sm-12">
+                        <div className="login-form">
+                            <form onSubmit={this.handleSubmit}>
+                                <div className="form-group">
+                                    <label>Name</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Name"
+                                        name="name"
+                                        value={this.state.name}
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Email</label>
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        placeholder="Email"
+                                        name="email"
+                                        value={this.state.email}
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input
+                                        type="password"
+                                        className="form-control"
+                                        placeholder="Password"
+                                        value={this.state.password}
+                                        name="password"
+                                        onChange={this.handleChange} />
+                                </div>
+                                <button type="submit" className="btn btn-black">Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
 }

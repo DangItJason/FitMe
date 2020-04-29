@@ -8,8 +8,8 @@ import FetchHomeData from "./components/FetchHomeData";
 
 function App() {
   return (
-    <Login></Login>
-    //<Signup></Signup>
+    //<Login></Login>
+    <Signup></Signup>
     //<Home></Home>
     //<FetchHomeData></FetchHomeData>
   );
