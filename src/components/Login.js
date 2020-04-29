@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 class Login extends Component {
@@ -57,7 +58,7 @@ class Login extends Component {
 					</div>
 				</div>
 				<div className="main">
-					<div className="col-md-6 col-sm-12">
+					<div className="col-md-4 col-sm-12">
 						<div className="login-form">
 							<form onSubmit={this.handleSubmit}>
 								<div className="form-group">
@@ -82,7 +83,7 @@ class Login extends Component {
 										onChange={this.handleChange} />
 								</div>
 								<button type="submit" className="btn btn-black">Login</button>
-								<button type="submit" className="btn btn-secondary">Register</button>
+								<Link to='/signup'><button type="submit" className="btn btn-secondary" >Register</button></Link>
 							</form>
 						</div>
 					</div>

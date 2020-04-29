@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css'; //same CSS as login...
 
 class Signup extends Component {
@@ -93,6 +94,7 @@ class Signup extends Component {
                                         onChange={this.handleChange} />
                                 </div>
                                 <button type="submit" className="btn btn-black">Register</button>
+                                <div>Already have an account? Click <Link to='/login'>here</Link></div>
                             </form>
                         </div>
                     </div>
