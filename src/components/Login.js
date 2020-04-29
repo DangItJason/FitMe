@@ -9,6 +9,7 @@ class Login extends Component {
 	state = {
 		email: "",
 		password: "",
+		login: null,
 	};
 
 	handleChange = event => {
@@ -22,6 +23,32 @@ class Login extends Component {
 		event.preventDefault();
 		console.log(this.state)
 	}
+
+	auth() {
+        fetch("http://localhost:9000/login/login", {
+            method: 'post',
+            body: JSON.stringify(this.state),
+            headers: { //Make sure your header content type you specify and body type match.
+                'Content-Type': 'application/json',
+              },
+        })
+		.then(res => this.setState({
+			login: res.json(),
+		}));
+    }
+
+    handleSubmit = event => {
+        //We can add true sign up functionality later.
+        event.preventDefault();
+			//console.log(this.state)
+			console.log("Before " + this.state.login);
+			this.auth();
+			console.log("After " + this.state.login);
+            // if (this.auth()) {
+			// 	//Proceed to home page.
+			// 	console.log("Log in success");
+			// }
+    }
 
 	render() {
 		return (

@@ -31,11 +31,24 @@ class Signup extends Component {
         return true;
     }
 
+    callAPI() {
+        fetch("http://localhost:9000/signup/signup", {
+            method: 'post',
+            body: JSON.stringify(this.state),
+            headers: { //Make sure your header content type you specify and body type match.
+                'Content-Type': 'application/json',
+              },
+        })
+        .then(res => res.json())
+        .then(res => console.log(res));
+    }
+
     handleSubmit = event => {
         //We can add true sign up functionality later.
         event.preventDefault();
         if (this.isPasswordValid()) {
-            console.log(this.state)
+            //console.log(this.state)
+            this.callAPI();
         }
     }
 
@@ -69,7 +82,7 @@ class Signup extends Component {
                             value={this.state.password}
                         />
                     </InputGroup>
-                    <button type="submit" variant = "primary">Sign Up</button>
+                    <button type="submit" variant="primary">Sign Up</button>
                 </Form>
             </Card>
         )
