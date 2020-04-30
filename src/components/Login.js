@@ -16,36 +16,37 @@ class Login extends Component {
 		})
 	}
 
-	handleSubmit = event => {
-		//Later we can make this functional.
+	handleAuthentication = event => {
 		event.preventDefault();
-		console.log(this.state)
-	}
 
-	auth() {
+		const history = this.props;
+
+		//Assigns JSON obj {result: true} or {result: false} to state.login
+		//Authentication
 		fetch("http://localhost:9000/login/login", {
 			method: 'post',
 			body: JSON.stringify(this.state),
-			headers: { //Make sure your header content type you specify and body type match.
+			headers: { 
 				'Content-Type': 'application/json',
 			},
 		})
-			.then(res => this.setState({
-				login: res.json(),
-			}));
+		.then(res => res.json())
+		.then(data => this.setState({
+			login: data,
+		}, () => { //Callback function after states been updated.
+			if (this.state.login.result === true) {
+				console.log("Sucessful login");
+				this.props.history.push('/home');
+			}
+			else if (this.state.login.result === false) {
+				console.log("Incorrect password");
+			}
+		}))
 	}
 
-	handleSubmit = event => {
-		//We can add true sign up functionality later.
-		event.preventDefault();
-		//console.log(this.state)
-		console.log("Before " + this.state.login);
-		this.auth();
-		console.log("After " + this.state.login);
-		// if (this.auth()) {
-		// 	//Proceed to home page.
-		// 	console.log("Log in success");
-		// }
+	login = () => {
+		
+		
 	}
 
 	render() {
@@ -60,7 +61,7 @@ class Login extends Component {
 				<div className="main">
 					<div className="col-md-4 col-sm-12">
 						<div className="login-form">
-							<form onSubmit={this.handleSubmit}>
+							<form onSubmit={this.handleAuthentication}>
 								<div className="form-group">
 									<label>Email</label>
 									<input

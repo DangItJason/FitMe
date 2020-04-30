@@ -10,10 +10,9 @@ class Home extends Component {
             <Container>
                 <Col>
                     <Home_Navbar></Home_Navbar>
-                    <Home_Api></Home_Api>
+                    {/* <Home_Api></Home_Api> */}
                 </Col>
             </Container>
-
         )
     }
 }
