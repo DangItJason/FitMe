@@ -8,6 +8,7 @@ class Signup extends Component {
         name: "",
         email: "",
         password: "",
+        visible: false
     };
 
     handleChange = event => {
@@ -17,17 +18,19 @@ class Signup extends Component {
     }
 
     isPasswordValid = event => {
-        //return if password is valid, true. password is not valid, false.
+        //Return: if password is valid, true. password is not valid, false.
 
         if (this.state.password.length < 8) {
-            console.log("Password does not contain at least 8 characters.")
+            this.setState({
+                visible: true
+            })
             return false;
         }
 
         return true;
     }
     //Submit user data to DB -> Open up home page
-    callAPI() {
+    submitUser() {
         fetch("http://localhost:9000/signup/signup", {
             method: 'post',
             body: JSON.stringify(this.state),
@@ -35,18 +38,18 @@ class Signup extends Component {
                 'Content-Type': 'application/json',
             },
         })
-        .then(res => res.json())
-        .then(res => console.log(res))
         .then(this.props.history.push('/home'))
     }
 
     handleSubmit = event => {
-        //We can add true sign up functionality later.
         event.preventDefault();
         if (this.isPasswordValid()) {
-            //console.log(this.state)
-            this.callAPI();
+            this.submitUser();
         }
+        //Broken
+        // else {
+        //     this.state.visible ? <div>Hello world</div> : <div>Hidden</div>
+        // }
     }
 
     render() {
@@ -55,7 +58,7 @@ class Signup extends Component {
                 <div className="sidenav">
                     <div className="login-main-text">
                         <h2>Sign Up!</h2>
-                        <p>Enter your name, email and password.</p>
+                        <p>Enter your name, email and password to sign up.</p>
                     </div>
                 </div>
                 <div className="main">

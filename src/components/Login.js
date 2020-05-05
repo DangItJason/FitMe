@@ -19,10 +19,7 @@ class Login extends Component {
 	handleAuthentication = event => {
 		event.preventDefault();
 
-		const history = this.props;
-
-		//Assigns JSON obj {result: true} or {result: false} to state.login
-		//Authentication
+		//Assigns {result: true} or {result: false} to state.login
 		fetch("http://localhost:9000/login/login", {
 			method: 'post',
 			body: JSON.stringify(this.state),
@@ -50,7 +47,7 @@ class Login extends Component {
 				<div className="sidenav">
 					<div className="login-main-text">
 						<h2>Login</h2>
-						<p>Enter your email and password to access.</p>
+						<p>Enter your email and password to continue.</p>
 					</div>
 				</div>
 				<div className="main">
