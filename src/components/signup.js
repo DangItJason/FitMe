@@ -26,7 +26,7 @@ class Signup extends Component {
 
         return true;
     }
-
+    //Submit user data to DB -> Open up home page
     callAPI() {
         fetch("http://localhost:9000/signup/signup", {
             method: 'post',
@@ -35,8 +35,9 @@ class Signup extends Component {
                 'Content-Type': 'application/json',
             },
         })
-            .then(res => res.json())
-            .then(res => console.log(res));
+        .then(res => res.json())
+        .then(res => console.log(res))
+        .then(this.props.history.push('/home'))
     }
 
     handleSubmit = event => {

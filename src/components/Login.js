@@ -39,14 +39,9 @@ class Login extends Component {
 				this.props.history.push('/home');
 			}
 			else if (this.state.login.result === false) {
-				console.log("Incorrect password");
+				console.log("Incorrect credentials");
 			}
 		}))
-	}
-
-	login = () => {
-		
-		
 	}
 
 	render() {

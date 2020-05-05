@@ -10,7 +10,6 @@ class Home_Navbar extends Component {
                 <Nav className="mr-auto">
                     <Nav.Link href="">Home</Nav.Link>
                     <Nav.Link href="">Exercises</Nav.Link>
-                    <Nav.Link href="">Pricing</Nav.Link>
                 </Nav>
             </Navbar>
         )

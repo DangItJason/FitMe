@@ -4,15 +4,15 @@ class Home_Api extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            apiResponse: "",
+            exercises: null,
         };
     }
 
     callAPI() {
         fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
+        .then(res => res.json())
         .then(res => this.setState({
-            apiResponse: res
+            exercises: res
         }));
     }
 
