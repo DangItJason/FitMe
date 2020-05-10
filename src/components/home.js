@@ -7,7 +7,7 @@ function Home(props) {
     return (
         <Container>
                 <Home_Navbar name={props.location.name}></Home_Navbar>
-                <Home_Main></Home_Main>
+                <Home_Main email={props.location.email}></Home_Main>
         </Container>
     )
 }

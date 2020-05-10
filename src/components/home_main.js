@@ -28,9 +28,10 @@ class Home_main extends Component {
     }
 
     handleGetExercises = () => {
-        fetch("http://localhost:9000/home/home", {
+
+        fetch("http://localhost:9000/home/homes", {
             method: 'post',
-            body: JSON.stringify(this.state),
+            body: JSON.stringify(this.props.email),
             headers: {
                 'Content-Type': 'application/json',
             },
