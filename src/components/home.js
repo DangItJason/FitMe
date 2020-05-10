@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 function Home(props) {
     return (
         <Container>
-                <Home_Navbar name={props.email}></Home_Navbar>
+                <Home_Navbar name={props.location.name}></Home_Navbar>
                 <Home_Main></Home_Main>
         </Container>
     )

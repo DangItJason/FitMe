@@ -5,6 +5,7 @@ import './Login.css';
 class Login extends Component {
 
 	state = {
+		name: "",
 		email: "",
 		password: "",
 		login: null,
@@ -23,25 +24,26 @@ class Login extends Component {
 		fetch("http://localhost:9000/login/login", {
 			method: 'post',
 			body: JSON.stringify(this.state),
-			headers: { 
+			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
-		.then(res => res.json())
-		.then(data => this.setState({
-			login: data,
-		}, () => { //Callback function after states been updated.
-			if (this.state.login.result === true) {
-				console.log("Sucessful login");
-				this.props.history.push({
-					pathname: '/home',
-					email: this.state.email,
-				});
-			}
-			else if (this.state.login.result === false) {
-				console.log("Incorrect credentials");
-			}
-		}))
+			.then(res => res.json())
+			.then(data => this.setState({
+				login: data,
+			}, () => { //Callback function after states been updated.
+				if (this.state.login.result === true) {
+					console.log("Sucessful login");
+					this.props.history.push({
+						pathname: '/home',
+						name: this.state.name,
+						email: this.state.email
+					});
+				}
+				else if (this.state.login.result === false) {
+					console.log("Incorrect credentials");
+				}
+			}))
 	}
 
 	render() {
@@ -57,6 +59,17 @@ class Login extends Component {
 					<div className="col-md-4 col-sm-12">
 						<div className="login-form">
 							<form onSubmit={this.handleAuthentication}>
+								<div className="form-group">
+									<label>Name</label>
+									<input
+										type="text"
+										className="form-control"
+										placeholder="Name"
+										name="name"
+										value={this.state.name}
+										onChange={this.handleChange}
+									/>
+								</div>
 								<div className="form-group">
 									<label>Email</label>
 									<input
