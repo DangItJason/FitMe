@@ -5,7 +5,7 @@ class Home_main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
             exercise: "",
             exercises: "Hello",
         };
@@ -48,7 +48,7 @@ class Home_main extends Component {
     render() {
         return (
             <Container>
-                <div>Home Page</div>
+                <br></br>
                 <form onSubmit = {this.handleSubmitExercise}>
                     <div className="form-group">
                         <input

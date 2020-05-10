@@ -33,7 +33,10 @@ class Login extends Component {
 		}, () => { //Callback function after states been updated.
 			if (this.state.login.result === true) {
 				console.log("Sucessful login");
-				this.props.history.push('/home');
+				this.props.history.push({
+					pathname: '/home',
+					email: this.state.email,
+				});
 			}
 			else if (this.state.login.result === false) {
 				console.log("Incorrect credentials");
