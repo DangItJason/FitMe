@@ -4,36 +4,66 @@ import Container from 'react-bootstrap/Container';
 class Home_main extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
+            
+            exercise: "",
             exercises: "Hello",
         };
     }
 
-    getExercises = () => {
+    handleChange = event => {
+		this.setState({
+			[event.target.name]: event.target.value
+		})
+	}
+    
+    handleSubmitExercise = () => {
         fetch("http://localhost:9000/home/home", {
             method: 'post',
-			body: JSON.stringify(this.state),
-			headers: { 
-				'Content-Type': 'application/json',
+            body: JSON.stringify(this.state),
+            headers: {
+                'Content-Type': 'application/json',
             },
         })
-        .then(res => res.json())
-        .then(data => this.setState({
-            exercises: data
-        }));
+    }
+
+    handleGetExercises = () => {
+        fetch("http://localhost:9000/home/home", {
+            method: 'post',
+            body: JSON.stringify(this.state),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => res.json())
+            .then(data => this.setState({
+                exercises: data
+            }));
     }
 
     componentDidMount = () => {
-        this.getExercises();
+        this.handleGetExercises();
     }
 
     render() {
         return (
             <Container>
-                <div>Home Main</div>
-                <div>{this.state.exercises}</div>
+                <div>Home Page</div>
+                <form onSubmit = {this.handleSubmitExercise}>
+                    <div className="form-group">
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Name of exercise"
+                            name="email"
+                            value={this.state.exercise}
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-black">Add Exercise</button>
+                </form>
             </Container>
-            
+
         )
     }
 }
