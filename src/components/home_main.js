@@ -12,7 +12,6 @@ class Home_main extends Component {
   }
 
   componentDidMount = () => {
-    console.log("Component did mount");
     this.handleGetExercises();
     this.handleGetDayOfWeek();
   };
@@ -33,7 +32,7 @@ class Home_main extends Component {
     });
   };
 
-  handleGetExercises = () => {
+  handleGetExercises = (event) => {
     fetch("http://localhost:9000/home/homes", {
       method: "post",
       body: JSON.stringify(this.props.email),
@@ -44,8 +43,8 @@ class Home_main extends Component {
       .then((res) => res.json())
       .then((data) =>
         this.setState({
-          exercises: data,
-        })
+            exercises: data,
+          })
       );
   };
 
@@ -60,7 +59,6 @@ class Home_main extends Component {
       "Friday",
       "Saturday"
     );
-    console.log(weekday[objToday.getDay()]);
     this.setState({
       dayOfWeek: weekday[objToday.getDay()],
     });
@@ -86,6 +84,7 @@ class Home_main extends Component {
           </button>
         </form>
         <div>{this.state.dayOfWeek}</div>
+        <div></div>
       </Container>
     );
   }
